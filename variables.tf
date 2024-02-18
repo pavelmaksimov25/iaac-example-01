@@ -29,3 +29,13 @@ variable "ami_filter" {
     owner = "679593333241" # Bitnami
   }
 }
+
+variable "asg_min" {
+  description = "Minimum instance count for the ASG"
+  default     = 1
+}
+
+variable "asg_max" {
+  description = "Maximum instance count for the ASG"
+  default     = 2
+}
