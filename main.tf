@@ -1,11 +1,11 @@
 data "aws_ami" "example_ami" {
     most_recent = true
 
-    owners = [var.environment.ami_filter.owner]
+    owners = [var.ami_filter.owner]
 
     filter {
       name   = "name"
-      values = [var.environment.ami_filter.name]
+      values = [var.ami_filter.name]
     }
 
     filter {
@@ -41,7 +41,7 @@ module "example_autoscaling" {
   target_group_arns   = module.example_alb.target_group_arns
   security_groups     = [module.example_sg.security_group_id]
   instance_type       = var.instance_type
-  image_id            = data.aws_ami.app_ami.id
+  image_id            = data.aws_ami.example_ami.id
 }
 
 module "example_alb" {
