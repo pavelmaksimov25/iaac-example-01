@@ -1,3 +1,22 @@
+variable "instance_type" {
+  description = "Type of EC2 instance to provision"
+  default     = "t3.nano"
+}
+
+variable "ami_filter" {
+  description = "Name filter and owner for AMI"
+
+  type    = object ({
+    name  = string
+    owner = string
+  })
+
+  default = {
+    name  = "bitnami-tomcat-*-x86_64-hvm-ebs-nami"
+    owner = "979382823631" # Bitnami
+  }
+}
+
 variable "environment" {
   description = "Deployment environment"
 
@@ -11,24 +30,6 @@ variable "environment" {
   }
 }
 
-variable "instance_type" {
-  description = "Type of EC2 instance to provision"
-  default     = "t3.micro"
-}
-
-variable "ami_filter" {
-  description = "Name filter and owner for AMI"
-
-  type    = object ({
-    name  = string
-    owner = string
-  })
-
-  default = {
-    name  = "bitnami-wordpress-5.0.2-1-linux-ubuntu-*"
-    owner = "679593333241" # Bitnami
-  }
-}
 
 variable "asg_min" {
   description = "Minimum instance count for the ASG"
