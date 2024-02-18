@@ -1,17 +1,17 @@
 data "aws_ami" "example_ami" {
-    most_recent = true
+  most_recent = true
 
-    owners = [var.ami_filter.owner]
+  owners = [var.ami_filter.owner]
 
-    filter {
-      name   = "name"
-      values = [var.ami_filter.name]
-    }
+  filter {
+    name   = "name"
+    values = [var.ami_filter.name]
+  }
 
-    filter {
-      name   = "virtualization-type"
-      values = ["hvm"]
-    }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
 }
 
 module "example_vpc" {
